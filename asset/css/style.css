@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#canvas {
+  border: 1px solid black;
+  /* Optional: For a better pixelated effect */
+  image-rendering: pixelated;
+  cursor: crosshair;
+}
+#image {
+  width: 500px; /* Set the desired width */
+  height: auto; /* Maintain aspect ratio */
+  display: none; /* Hide the original image */
+}
+#color {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #000;
+}
