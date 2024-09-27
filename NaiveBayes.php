@@ -1,6 +1,6 @@
 <?php 
 
-class bayes
+class NaiveBayes
 {
     private $train = 'train.json';
 
@@ -63,23 +63,21 @@ class bayes
 
     public function sumR($red, $type){
         $data = file_get_contents($this->train);
-        $results = json_decode($data);
-        
+        $results = json_decode($data, true);
+
         $s = 0;
         foreach ($results as $result){
             if($result['R'] == $red && $result['type'] == $type){
                 $s += 1;
             }
         }
-        if($s == 0){
-            return $s = 1;
-        }
+        $s += 1;
         return $s;
     }
 
     public function sumB($blue, $type){
         $data = file_get_contents($this->train);
-        $results = json_decode($data);
+        $results = json_decode($data, true);
         
         $s = 0;
         foreach ($results as $result){
@@ -87,25 +85,25 @@ class bayes
                 $s += 1;
             }
         }
-        if($s == 0){
-            return $s = 1;
-        }
+        $s += 1;
         return $s;
     }
 
     public function sumG($green, $type){
         $data = file_get_contents($this->train);
-        $results = json_decode($data);
+        $results = json_decode($data, true);
         
         $s = 0;
         foreach ($results as $result){
             if($result['G'] == $green && $result['type'] == $type){
                 $s += 1;
+            } else if($result['G'] == $green && $result['type'] == $type){
+                $s += 1;
+            } else if($result['G'] == $green && $result['type'] == $type){
+                $s += 1;
             }
         }
-        if($s == 0){
-            return $s = 1;
-        }
+        $s += 1;
         return $s;
     }
 
@@ -168,13 +166,17 @@ class bayes
     */
 
     function Decision($HasilDaun, $HasilBunga, $HasilPohon){
+        $hasil = 'Tidak Diketahui';
+        $hitung = null;
+        $pHasil = null;
+
         if($HasilDaun > $HasilBunga && $HasilDaun > $HasilPohon){
-            $hasil = 'Pohon';
+            $hasil = 'Daun';
             $hitung = ($HasilDaun / ($HasilDaun + $HasilBunga + $HasilPohon) * 100);
             $pHasil = 100 - $hitung;
         }
         if($HasilBunga > $HasilDaun && $HasilBunga > $HasilPohon){
-            $hasil = 'Pohon';
+            $hasil = 'Bunga';
             $hitung = ($HasilBunga / ($HasilDaun + $HasilBunga + $HasilPohon) * 100);
             $pHasil = 100 - $hitung;
         }
@@ -183,9 +185,8 @@ class bayes
             $hitung = ($HasilPohon / ($HasilDaun + $HasilBunga + $HasilPohon) * 100);
             $pHasil = 100 - $hitung;
         }
-        $hasil = array($hasil, $hitung, $pHasil);
-        return $hasil;
+        $result = array('hasil' => $hasil, 'hitung' => $hitung, 'pHasil' => $pHasil);
+        return $result;
     }
 }
-
 ?>

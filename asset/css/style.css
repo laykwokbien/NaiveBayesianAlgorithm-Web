@@ -2,11 +2,17 @@
   margin: 0;
   padding: 0;
 }
-body {
+.container {
+  width: 100vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
+.infomation{
+  display: flex;
+  flex: row;
+}
+
 #canvas {
   border: 1px solid black;
   /* Optional: For a better pixelated effect */
