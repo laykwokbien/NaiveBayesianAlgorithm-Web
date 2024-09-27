@@ -54,22 +54,24 @@ if(isset($_GET['R'])){
         <button type="submit" name="submit">Change</button>
     </form> -->
     <div class="container">
-    <div class="infomation">
-            <?php if(isset($_GET['R'])):
-                    
-            ?>
-            <?php else: 
-                echo '<h1 id="color"><h1>';
-            endif;    
-            ?>
-            
-            <?php if(isset($type)):?>
-                <div> <?= $type['hasil'];  ?> </div>
-            <?php endif; ?>
-        </div>
         <div class="container-img">
             <img id="image" src="test-photo/beautiful-summer-garden-featuring-a-spectacular-royalty-free-image-1711378499.png" draggable="false" alt="Image">
             <canvas id="canvas"></canvas>
+        </div>
+        <div style="display: flex; flex-direction:column; position:fixed; color:black; align-items:center; background-color:aliceblue; top:0; right:0; padding:10px;">
+
+            <?php 
+            if(isset($_GET['R'])){
+                echo '<h3 style="background-color: rgb('. $red .','. $green .','. $blue .')" id="color">rgb('. $red .','. $green .','. $blue .')<h3>';
+            }
+            else{
+                echo '<h3 id="color"><h3>';
+            } 
+            ?>
+            
+            <?php if(isset($type)):?>
+                <div><?= $type['hasil'];?></div>
+            <?php endif; ?>
         </div>
     </div>
     <script src="asset/js/script.js"></script>

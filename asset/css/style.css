@@ -8,10 +8,6 @@
   flex-direction: row;
   align-items: center;
 }
-.infomation{
-  display: flex;
-  flex: row;
-}
 
 #canvas {
   border: 1px solid black;
